@@ -1,0 +1,23 @@
+{
+  "name": "soofaiap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "findBestLocation.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quiteaniceguy/soofaiap.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quiteaniceguy/soofaiap/issues"
+  },
+  "homepage": "https://github.com/quiteaniceguy/soofaiap#readme",
+  "devDependencies": {
+    "jest": "^26.0.1"
+  }
+}
