@@ -1,6 +1,17 @@
+/**
+  * get distance between two points squared
+  * @return {number} distance squared
+*/
 function getDistance(x1, y1, x2, y2){ 
 	return Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
 }
+/**
+ *  given point p and array of points a, finds index of closest point of a to p
+ *  @param {Number} x x coordinate of point p
+ *  @param {Number} y y coordinate of point p
+ *  @param {Number} points array of objects of form {x: val_1, y: val_2}
+ *  @return {Number} index of closest point
+ */
 function getClosestPointIndex(x, y, points){	
 	let closestIndex = 0;	
 	minDist = getDistance(points[0].x, points[0].y, x, y);
@@ -13,6 +24,11 @@ function getClosestPointIndex(x, y, points){
 	} 
 	return closestIndex;
 }
+/**
+ * removes data below threshhold(threhold should probably be passed to it)
+ * @param {Object} of form {max: val_1, data: [{counter: val_2}, {counter....]}
+ * @return {Object} of same form as above but with some data removed
+ */
 function pruneDataSet(dataSet){
 	const removeThreshold = dataSet.max/10;
 	var returnDataSet = dataSet;
@@ -25,6 +41,12 @@ function pruneDataSet(dataSet){
 
 	return returnDataSet;
 }
+/**
+ * finds best locations to maxamize vals 
+ * @param {Number} nLocations number of locations to find/number of centroids
+ * @param {Object} of form {max: val_1, data: [{lat: val_2, lng: val_3, counter: val_2},.. 
+ * @return {Array} of objects, each object of form {x: val_1, y: val_2}
+ */ 
 function findBestLocation(nLocations, dataSet){
     dataSet = pruneDataSet(dataSet);
     var maxLoops = 50;
@@ -98,8 +120,8 @@ function findBestLocation(nLocations, dataSet){
 //
 
 if(typeof exports !== 'undefined') {
-	exports.findBestLocation = findBestLocation;
-	exports.getDistance = getDistance;
+    exports.findBestLocation = findBestLocation;
+    exports.getDistance = getDistance;
     exports.getClosestPointIndex = getClosestPointIndex;
     exports.pruneDataSet = pruneDataSet;
 }
