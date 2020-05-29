@@ -1,5 +1,5 @@
 function getDistance(x1, y1, x2, y2){ 
-	return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+	return Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
 }
 function getClosestPointIndex(x, y, points){	
 	let closestIndex = 0;	
@@ -13,7 +13,20 @@ function getClosestPointIndex(x, y, points){
 	} 
 	return closestIndex;
 }
+function pruneDataSet(dataSet){
+	const removeThreshold = dataSet.max/10;
+	var returnDataSet = dataSet;
+	var counter = returnDataSet.data.length;
+	while(counter--){
+		if(returnDataSet.data[counter] < removeThreshold){
+			returnDataSet.data.splice(counter, 1);
+		}
+	}
+
+	return returnDataSet;
+}
 function findBestLocation(nLocations, dataSet){
+    dataSet = pruneDataSet(dataSet);
     var maxLoops = 50;
     var currentLoops = 0;
 	var centroids = [];
@@ -35,6 +48,7 @@ function findBestLocation(nLocations, dataSet){
 		//all of length nCentroids
 		let xSumPerCentroid = [];
 		let ySumPerCentroid = [];
+		let weightSumPerCentroid = [];
 		let nElementsPerCentroid = [];
 
 		/* classifies closest centroid to each data element */ 
@@ -49,16 +63,19 @@ function findBestLocation(nLocations, dataSet){
                 xSumPerCentroid[closestCentroidIndex[i]] = 0;
                 ySumPerCentroid[closestCentroidIndex[i]] = 0;
                 nElementsPerCentroid[closestCentroidIndex[i]] = 0;
+				weightSumPerCentroid[closestCentroidIndex[i]] = 0;
             }
-			xSumPerCentroid[closestCentroidIndex[i]] += dataSet.data[i].lat;
-            ySumPerCentroid[closestCentroidIndex[i]] += dataSet.data[i].lng;
+			let weight = Math.pow(dataSet.data[i].count / dataSet.max, 3);
+			weightSumPerCentroid[closestCentroidIndex[i]] += weight; 
+	    	xSumPerCentroid[closestCentroidIndex[i]] += (dataSet.data[i].lat * weight);
+            ySumPerCentroid[closestCentroidIndex[i]] += (dataSet.data[i].lng * weight);
             nElementsPerCentroid[closestCentroidIndex[i]]++;
 		}
 	
         /* computes new centroids based off of data elements assigned to centroid */
 		for(let i = 0; i < centroids.length; i++){
-            centroids[i].x = xSumPerCentroid[i]/nElementsPerCentroid[i];
-            centroids[i].y = ySumPerCentroid[i]/nElementsPerCentroid[i];
+            centroids[i].x = (1 / weightSumPerCentroid[i]) * xSumPerCentroid[i];
+            centroids[i].y = (1 / weightSumPerCentroid[i]) * ySumPerCentroid[i];
         }
  
 	 	if(JSON.stringify(lastClosestCentroidIndex) == JSON.stringify(closestCentroidIndex)){
@@ -82,5 +99,6 @@ if(typeof exports !== 'undefined') {
 	exports.findBestLocation = findBestLocation;
 	exports.getDistance = getDistance;
     exports.getClosestPointIndex = getClosestPointIndex;
+    exports.pruneDataSet = pruneDataSet;
 }
 

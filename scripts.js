@@ -328,6 +328,12 @@ theButton.onclick = function() {
 var rect = L.rectangle([northeastcoord, southwestcoord], { dashArray: "10", color: "#4d4d4d",  opacity: .8,  fillOpacity: 0});
 map.addLayer(rect);
 
+/* additions */
+centroids = findBestLocation(5, googlefoodData);
+console.log(centroids);
+for(let centroid of centroids){
+	var marker = new L.marker([centroid.x, centroid.y], {draggable:'true'}).addTo(map);
+	marker.on('click', markerOnClick);
 
-
+}
 
