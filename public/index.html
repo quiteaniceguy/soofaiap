@@ -4,17 +4,27 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heat Map Data</title> 
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-	Soofa Map Tool
-      </a>
-    </nav>
-	 
+        <link rel="stylesheet" href="./styles/styles.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
-  </head>
+
+
+    <title>Heat Map Data</title> 
+<!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.14.5/firebase-app.js"></script>
+	<script defer src="/__/firebase/init.js"></script>
+ 
+
+      
+<nav class="navbar navbar-light">
+  <a class="navbar-brand" href="#">
+	<img src="./resources/soofa_red.png" height="40" width="70" alt="">
+<hr size = "30"/>
+
+  </a> 
+</nav>
+
+</head>
   <body>
     <!-- Dropdown menu for cities. This is where you add a new city!  -->
     <form style="position:absolute; top: 75px; left: 450px;" >
@@ -33,10 +43,10 @@
     <!-- This is for the map view (leaflet.js) -->
     <link rel="stylesheet" href="./bower_components/leaflet/dist/leaflet.css" />
     <style> .leaflet-zoom-hide { position: absolute!important; } </style>
-    <script src="bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="./bower_components/leaflet/dist/leaflet.js"></script>
     <!--   This is for heatmap.js. (Must be in the same folder. If not, change the path!) -->
-    <script src="heatmap.js"></script>
-    <script src="leaflet-heatmap.js"></script>
+    <script src="./heatmap.js"></script>
+    <script src="./leaflet-heatmap.js"></script>
     <!-- Set up Google Maps Javascript API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdsGq2g7EJPonPoSutU98iQKL-9W3odG8&libraries=places"
       type="text/javascript"></script>
@@ -62,7 +72,7 @@
        
     </script>
     <!--  Default  Data File -->   
-    <script src="DataFiles/SoofaDataCambridge.js"></script> 
+    <script src="./DataFiles/SoofaDataCambridge.js"></script> 
     <!-- Set up score displays -->
     <div style="position:absolute; top: 105px; height: 500px; width: 700px;" class="heatmap" id="map" ></div>
     <form id = 'scoresform' style="visibility: hidden; ">
@@ -98,8 +108,8 @@
 	
 
     </div>
-    <script src="scripts/findBestLocation.js"></script>
-    <script src="scripts/scripts.js"></script>
+    <script src="./scripts/findBestLocation.js"></script>
+    <script src="./scripts/scripts.js"></script>
 
 
     
