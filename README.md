@@ -8,7 +8,7 @@ Hosted with Firebase
 Changes to the original application:
   - Added function that automatically identifies the best locations to maxamize scores, users can choose both which datasets to use and number of locations to find
   - restructured code to promote modularization and general organization
-  - added testing using jest
+  - added testing using jest(run using npm test)
   - minor display updates: included soofa logo, and added bootstrap, honestly still kinda ugly though
   - Firebase configuration stuff
   
