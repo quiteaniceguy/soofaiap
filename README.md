@@ -18,6 +18,9 @@ To-Do:
   - implement testing for functions other than k-means
   - get new google maps access key
   - changing cities never seemed to work from the onset, fix that bug, maybe has to do with google maps access key
+  - more documentation for functions
+  - inconsistent tabing through the whole thing, truly hideous
+  
   
 
   
