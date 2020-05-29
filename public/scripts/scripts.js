@@ -359,7 +359,7 @@ function displayBestLocations(){
 }
 function displayBestLocationsCheckbox(){
 	if(document.getElementById('nPlaces').value == ""){
-		alert("Please enter the number of locations you'd like to see and reselct the checkbox");
+		alert("Please enter the number of locations you'd like to see and reselect the checkbox");
 		return;
 	}
 	if(displayBestLocations() == 0) alert("must select heatmaps");
