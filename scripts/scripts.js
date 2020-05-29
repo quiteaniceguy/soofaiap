@@ -221,6 +221,9 @@ function layertrigger(keyword){
     compositelayer.setData({max: 0, data: []});
     currentDataDisplayed = undefined;
   }
+  if(document.getElementById("displayBestLocations").checked){
+    	displayBestLocations();
+  }
 }
 
 
@@ -334,10 +337,14 @@ map.addLayer(rect);
 /* additions */
 var bestLocationMarkers = [];
 function displayBestLocations(){
+	for(let i of bestLocationMarkers){
+		map.removeLayer(i);
+	}
+	bestLocationMarkers = [];
+
 	if(document.getElementById("displayBestLocations").checked){
-		if(currentDataDisplayed == undefined){
-			alert("must select heatmaps");
-			return;
+		if(currentDataDisplayed == undefined){	
+			return 0;
 		}
 		let nPlaces = document.getElementById('nPlaces').value;
 		centroids = findBestLocation(nPlaces, currentDataDisplayed);
@@ -348,11 +355,13 @@ function displayBestLocations(){
 			marker.on('click', markerOnClick);
 
 		}
-	}else{
-		for(let i of bestLocationMarkers){
-			map.removeLayer(i);
-		}
-		bestLocationMarkers = [];
+	}	
+}
+function displayBestLocationsCheckbox(){
+	if(document.getElementById('nPlaces').value == ""){
+		alert("Please clarify the number of locations you'd like to see");
+		return;
 	}
+	if(displayBestLocations() == 0) alert("must select heatmaps");
 }
 
