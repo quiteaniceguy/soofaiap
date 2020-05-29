@@ -1,4 +1,4 @@
-var bestLocation = require('../findBestLocation');
+var bestLocation = require('../scripts/findBestLocation');
 
 describe("Tests getDistance function ", () => {
 	test("should return distance = 25(because it returns distance squared)", () => {

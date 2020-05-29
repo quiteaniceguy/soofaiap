@@ -4,8 +4,14 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heat Map Data</title>
-    <h2 style="top: 5px; left: 450px; position: absolute;">Soofa Map Tool</h2>
+    <title>Heat Map Data</title> 
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+	Soofa Map Tool
+      </a>
+    </nav>
+	 
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
   </head>
@@ -25,7 +31,7 @@
     </form>
     <!-- Dependancies and external javascript code -->
     <!-- This is for the map view (leaflet.js) -->
-    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="./bower_components/leaflet/dist/leaflet.css" />
     <style> .leaflet-zoom-hide { position: absolute!important; } </style>
     <script src="bower_components/leaflet/dist/leaflet.js"></script>
     <!--   This is for heatmap.js. (Must be in the same folder. If not, change the path!) -->
@@ -85,11 +91,15 @@
       <input style="position:absolute; top: 425px; left: 825px; width: 300px;" id="address" type="text" readonly/>
     </form>
     <form> 
-      <label class = "scoredisplay" style="position:absolute; top: 30px; left: 750px;" for="average">Average Score:</label>
+      <label class = "scoredisplay" style="position:absolute; top: 30px; left: 60%;" for="average">Average Score:</label>
       <input style="position:absolute; top: 30px; left: 900px; width: 50px; height: 30px; font-size: 14px " id="average" type="text" readonly/>
     </form>
-    <script src="findBestLocation.js"></script>
-    <script src="scripts.js"></script>
+
+    <script src="scripts/findBestLocation.js"></script>
+    <script src="scripts/scripts.js"></script>
+
+
+    
     <!-- Dropdown menu for multiple heatmap layers  -->
     <form id = "layerselector" style="position:absolute; top: 75px; left: 750px;">
       <div class="multiselect">
@@ -134,7 +144,12 @@
       <p> Click on the map to create a draggable marker. Display heatmaps on the map by picking from 'Pick Heatmap Layers!' Change cities by selectin from 'Pick a City.' </p>
       <p><b>Note:</b> If the heatmaps are not displaying, change your browser's security settings. </p>
     </div>
-  </body>
+    <div id="bestLocationContent">
+	    <input id="nPlaces" type="text" placeholder="3"/>
+	    <input id="displayBestLocations" onclick="displayBestLocations()" type="checkbox">Display Best Locations</button>
+    </div>
+    <?
+  
 </html>
 
 
