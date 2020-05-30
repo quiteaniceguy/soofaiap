@@ -20,6 +20,7 @@ To-Do:
   - changing cities never seemed to work from the onset, fix that bug, maybe has to do with google maps access key
   - more documentation for functions
   - inconsistent tabing through the whole thing, truly hideous
+  - breaking up css into multiple files(for organization) and then use tool to load them in as one file(for speed)
   - add more features
   
   
